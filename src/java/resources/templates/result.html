@@ -1,0 +1,348 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+        <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"   integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw="   crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body class="col-md-12 col-sm-12 col-lg-12 px-0">
+        <header>
+            <div id = "header-container" class="d-flex justify-content-between">
+                <div id = "header-info test-information" class="col-md-5 py-4">
+                    <div>
+                        <b>Test Feedback</b> 
+                    </div>
+                </div>
+                <div class="col-md-3 py-4 px-5 float-right">
+                    <button id="exit-button" onclick="exit()">Exit Test</button>
+                </div>
+                
+                
+            </div>
+            <div id="sub-header">
+
+            </div>
+            
+        </header>
+        <main>
+
+            <div id="score-container">
+                <div id="score-bar">
+                  <div id="score-progress"></div>
+                </div>
+                <div id="score-text"></div>
+            </div>
+            <style>
+                #score-container {
+                    width: 300px;
+                    height: 30px;
+                    position: relative;
+                    margin: 20px auto;
+                }
+
+                #score-bar {
+                    background-color: #2471dc21;
+                    border: 1px solid #cccccc2b;
+                    height: 100%;
+                    position: absolute;
+                    width: 100%;
+                    box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 10px 0px;
+                }
+
+                #score-progress {
+                    height: 100%;
+                    position: absolute;
+                    width: 0%;
+                    }
+
+                #score-text {
+                    color: #333;
+                    font-size: 16px;
+                    font-weight: 400;
+                    position: absolute;
+                    text-align: center;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 100%;
+                }
+            </style>
+            <script>
+                function updateScore(score) {
+                    const scoreText = document.getElementById('score-text');
+                    scoreText.innerText = score >=75 ? `Marks: ${score}% - Pass` : `Marks: ${score}% - Fail`;
+                    
+                    const scoreBar = document.getElementById('score-bar');
+                    const scoreProgress = document.getElementById('score-progress');
+                    
+                    let color;
+                    if (score <= 50) {
+                        color = `rgb(255, ${(score/54)*255}, 0)`;
+                    } else {
+                        color = `rgb(${((score-100)/54)*255}, 255, 0)`;
+                    }
+                    
+                    scoreProgress.style.width = `${score}%`;
+                    scoreProgress.style.backgroundColor = color;
+                }
+                updateScore([[${score}]]);
+            </script>
+
+            <div id = "result" class="mt-2">
+                <div id="header-container">
+                    <div class="px-3 py-2">Test Result</div>
+                </div>  
+                <div id="cont" class="answer scroll-tables">
+                    <table class="table_answer">
+                    <tbody id = "table-content">
+                        <tr>
+                            <th >セクション<br><span class="ans_fs80">Section</span></th>
+                            <th >カテゴリー<br><span class="ans_fs80">Category</span></th>
+                            <th >正誤<br><span class="ans_fs80">Result</span></th>
+                            <th >あなたが選んだ答え<br><span class="ans_fs80">Selected Answer(s)</span></th>
+                            <th >正答<br><span class="ans_fs80">Correct Answer(s)</span></th>
+                        </tr>
+                            <!--<tr>
+                                <td rowspan="4" class="center">文字<br>と<br>語彙<span class="ans_fs80">Script<br>and<br>Vocabulary</span></td>
+                                <td>語の意味<span class="ans_fs80">Word Meaning</span></td>
+                                <td id="r1" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c1">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a1">わらいます</td>
+                            </tr>
+                            <tr>
+                                <td>語の用法<span class="ans_fs80">Word Usage</span></td>
+                                <td id="r2" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c2">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a2">なれて</td>
+                            </tr>
+                            <tr>
+                                <td>漢字の読み<span class="ans_fs80">Kanji Reading</span></td>
+                                <td id="r3" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c3">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a3">すいどう</td>
+                            </tr>
+                            <tr>
+                                <td>漢字の意味と用法<span class="ans_fs80">Kanji Meaning and Usage</span></td>
+                                <td id="r4" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c4">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a4">光って</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="center">会話<br>と<br>表現<span class="ans_fs80">Conversation<br>and<br>Expression</span></td>
+                                <td>文法<span class="ans_fs80">Grammar</span></td>
+                                <td id="r5" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c5">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a5">あげよう</td>
+                            </tr>
+                            <tr>
+                                <td>表現<span class="ans_fs80">Expression</span></td>
+                                <td id="r6" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c6">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a6">また　こんど</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4" class="center">聴解<span class="ans_fs80">Listening<br>Comprehension</span></td>
+                                <td>内容理解<span class="ans_fs80">（社交的なやりとり）</span><span class="ans_fs80 mgt10">Comprehending Content</span><span class="ans_fs70 mgt10">(conversation)</span></td>
+                                <td id="r7" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c7">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a7"><img src="./common/img/q7a3.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td>内容理解<span class="ans_fs80">（店や公共機関でのやりとり）</span><span class="ans_fs80 mgt10">Comprehending Content</span><span class="ans_fs70 mgt10">(communicating at shops<br>and public places)</span></td>
+                                <td id="r8" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c8">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a8"><img src="./common/img/q8a3.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">内容理解<span class="ans_fs80">（指示・アナウンス）</span><span class="ans_fs80 mgt10">Comprehending Content</span><span class="ans_fs70 mgt10">(listening to announcements<br>and instructions)</span></td>
+                                <td id="r9" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c9">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a9"><img src="./common/img/q9a1.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td id="r10" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c10">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a10"><img src="./common/img/q10a2.jpg"></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4" class="center">読解<span class="ans_fs80">Reading<br>Comprehension</span></td>
+                                <td rowspan="2">内容理解<span class="ans_fs80">Comprehending Content</span></td>
+                                <td id="r11" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c11">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a11">歌と　おどりを　見ること</td>
+                            </tr>
+                            <tr>
+                                <td id="r12" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c12">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a12">スピーチの　けいけんが<br>なかったけど、うまく　いった</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2">情報検索<span class="ans_fs80">Information Search</span></td>
+                                <td id="r13" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c13">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a13">2つ</td>
+                            </tr>
+                            <tr>
+                                <td id="r14" class="center" style="color: rgb(0, 0, 255);">×</td>
+                                <td id="c14">未解答<br><p style="font-size:80%">Unanswered</p></td>
+                                <td id="a14">ネツナレ錠</td>
+                            </tr>-->
+                    </tbody>
+                    </table>
+                    </div>
+            </div>
+        </main>
+        <footer class="mt-auto">
+           <div class="container col-12">
+                
+           </div>
+
+        </footer>
+        
+    </body>
+    <style>
+        body,html{
+            margin: 0;
+        }
+        header{
+            width: 100%;
+            height: fit-content;
+            color: azure !important;
+        }
+        #cont{
+            overflow-x: scroll;
+        }
+        #header-container{
+            background-color: black;
+            color: azure;
+        }
+        #sub-header{
+            background-color: rgb(116, 180, 116);
+            font-size: 18px;
+            height: 8px;
+        }
+        #exit-button{
+            width: 150px;
+            height:30px;
+            background-color: rgb(232, 182, 116);
+            border: none;
+            cursor: pointer;
+        }
+        th{ 
+            background-color: rgb(242, 244, 245);
+            text-align: center;
+            padding: 20px;
+        }
+        tr{
+            border-bottom: solid 2px rgb(242, 244, 245);
+        }
+        td{
+            border-right: solid 2px rgb(242, 244, 245);
+            padding: 10px;
+        }
+        th{
+            border-right: solid 2px white;
+        }
+        main{
+            width: inherit;
+        }
+        .center{
+            text-align: center;
+        }
+        #result{
+            width: fit-content;
+            margin: auto;
+            border-left: solid 2px rgb(242, 244, 245);
+            border-right: solid 2px rgb(242, 244, 245);
+        }
+    </style>
+    <script>
+        function exit(){
+            window.location.href = "/";
+        }
+    </script>
+    <script th:inline = "javascript">
+        const results = [[${result}]];
+        var imageBasePath = '/media/';
+        const check = function(selectedAnswer, correctAnswer) {
+            return selectedAnswer == correctAnswer ? "✓" : "×";
+        };
+        const getAnswer = function(answer){
+            return answer == "null" ? `未解答<br><p style="font-size:80%">Unanswered</p>`:answer;
+        }
+        var body = document.getElementById('table-content');
+        for(var key in results){
+            for(var i = 0; i< results[key].length;i++){
+                var thisResult = results[key][i];
+                if(i == 0){
+                    if(thisResult['optionAsImage'] == "true"){
+                        if(getAnswer(thisResult['selectedAnswerText']) == thisResult['selectedAnswerText']){
+                            body.innerHTML +=`<tr>
+                                                <td rowspan="`+results[key].length+`"  class="center"><br><span class="ans_fs80">`+key+`</span></td>
+                                                <td>${thisResult['qTextInJapanese']} <br> <span class="ans_fs80">` + thisResult['qTextInEnglish'] + `</span></td>
+                                                <td id="r1" class="center" style="color: rgb(0, 0, 255);">${check(thisResult['selectedAnswer'], thisResult['correctAnswer'])}</td>
+                                                <td id="c1"><img src = "`+imageBasePath+`${getAnswer(thisResult['selectedAnswerText'])}.png" height = "50"></td>
+                                                <td id="a1"><img src = "`+imageBasePath+`${thisResult['correctAnswerText']}.png" height = "50"></td>
+                                            </tr>`;
+                                            console.log(0,thisResult['correctAnswerText']);
+                        }
+                        else{
+                            body.innerHTML +=`<tr>
+                                                <td rowspan="`+results[key].length+`"  class="center"><br><span class="ans_fs80">`+key+`</span></td>
+                                                <td>${thisResult['qTextInJapanese']} <br> <span class="ans_fs80">` + thisResult['qTextInEnglish'] + `</span></td>
+                                                <td id="r1" class="center" style="color: rgb(0, 0, 255);">${check(thisResult['selectedAnswer'], thisResult['correctAnswer'])}</td>
+                                                <td id="c1">${getAnswer(thisResult['selectedAnswerText'])}</td>
+                                                <td id="a1"><img src = "`+imageBasePath+`${thisResult['correctAnswerText']}.png" height = "50"></td>
+                                            </tr>`;
+                                            console.log(1);
+                        }
+                    }
+                    else{
+                        body.innerHTML +=`<tr>
+                                        <td rowspan="`+results[key].length+`"  class="center">文字 と 語彙<br><span class="ans_fs80">`+key+`</span></td>
+                                        <td>${thisResult['qTextInJapanese']} <br> <span class="ans_fs80">` + thisResult['qTextInEnglish'] + `</span></td>
+                                        <td id="r1" class="center" style="color: rgb(0, 0, 255);">${check(thisResult['selectedAnswer'], thisResult['correctAnswer'])}</td>
+                                        <td id="c1">${getAnswer(thisResult['selectedAnswerText'])}</td>
+                                        <td id="a1">${thisResult['correctAnswerText']}</td>
+                                    </tr>`;
+                                    console.log(2);
+                    }
+                }
+                else{
+                    if(thisResult['optionAsImage'] == "true"){
+                        if(getAnswer(thisResult['selectedAnswerText']) == thisResult['selectedAnswerText']){
+                            body.innerHTML +=`<tr>
+                                                <td>${thisResult['qTextInJapanese']} <br> <span class="ans_fs80">` + thisResult['qTextInEnglish'] + `</span></td>
+                                                <td id="r1" class="center" style="color: rgb(0, 0, 255);">${check(thisResult['selectedAnswer'], thisResult['correctAnswer'])}</td>
+                                                <td id="c1"><img src = "`+imageBasePath+`${getAnswer(thisResult['selectedAnswerText'])}.png" height = "50"></td>
+                                                <td id="a1"><img src = "`+imageBasePath+`${thisResult['correctAnswerText']}.png" height = "50"></td>
+                                            </tr>`;
+                                            console.log(3);
+                        }
+                        else{
+                            body.innerHTML +=`<tr>
+                                                <td>${thisResult['qTextInJapanese']} <br> <span class="ans_fs80">` + thisResult['qTextInEnglish'] + `</span></td>
+                                                <td id="r1" class="center" style="color: rgb(0, 0, 255);">${check(thisResult['selectedAnswer'], thisResult['correctAnswer'])}</td>
+                                                <td id="c1">${getAnswer(thisResult['selectedAnswerText'])}</td>
+                                                <td id="a1"><img src = "`+imageBasePath+`${thisResult['correctAnswerText']}.png" height = "50"></td>
+                                            </tr>`;
+                                            console.log(4);
+                        }
+                    }
+                    else{
+                        body.innerHTML +=`<tr>
+                                            <td>${thisResult['qTextInJapanese']} <br> <span class="ans_fs80">` + thisResult['qTextInEnglish'] + `</span></td>
+                                            <td id="r1" class="center" style="color: rgb(0, 0, 255);">${check(thisResult['selectedAnswer'], thisResult['correctAnswer'])}</td>
+                                            <td id="c1">${getAnswer(thisResult['selectedAnswerText'])}</td>
+                                            <td id="a1">${thisResult['correctAnswerText']}</td>
+                                        </tr>`;
+                                        console.log(5);
+                    }
+                }
+                
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Deviz">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="/css/CreateTest.css">
+	<title>KJLC - Create Your Account</title>
+	<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+	<!-- Custom styles for this template -->
+	<link href="/css/dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+	<header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
+		<div class="logo aln-mid">
+			<a href="/home"><img src="/images/kantipur-logo.png" alt="KantipurJapanese Language Center" /></a>
+		</div>
+		<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+			data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="navbar-nav">
+			<div class="nav-item text-nowrap">
+			</div>
+		</div>
+	</header>
+
+	<div class="container-fluid">
+		<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+			data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+			<div class="position-sticky pt-3 sidebar-sticky">
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<a class="nav-link" style="cursor:default;">
+							Frequent Questions
+						</a>
+					</li>
+				</ul>
+                <div th:each="faq : ${faqs}">
+					<div class="accordion" id="accordionDashboardNav">
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingOne">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+									data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+									<div th:text="${faq.title}"></div>
+								</button>
+							</h2>
+							<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+								data-bs-parent="#accordionDashboardNav">
+								<p th:text="${faq.description}" style="padding: 10px; overflow-wrap: break-word;">
+									
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</nav>
+		<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+			<div class="test-register">
+				<div class="container">
+					<h4>Create Account</h4>
+					<form method="POST" th:action="@{/user/register}" class="my-login-validation" novalidate="">
+						<div class="">
+							<div class="form-group">
+								<label for="name">First Name</label>
+								<input id="name" type="text" class="form-control" name="FirstName" required autofocus>
+								<div class="invalid-feedback">
+									What's your name?
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Last Name</label>
+								<input id="name" type="text" class="form-control" name="LastName" required autofocus>
+								<div class="invalid-feedback">
+									What's your name?
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="email">E-Mail Address</label>
+								<input id="email" type="email" class="form-control" name="email" required>
+								<div class="invalid-feedback">
+									Your email is invalid
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input id="password" type="password" class="form-control" name="password" required
+									data-eye>
+								<div class="invalid-feedback">
+									Password is required
+								</div>
+								<div class="password-strength">
+									<div id="password-strength-bar"></div>
+								</div>
+							</div>
+							<style>
+								#password:focus{
+									outline: none !important;
+								}
+								.password-strength {
+									margin-top: 10px;
+									height: 5px;
+									background-color: #e0e0e0;
+									border-radius: 3px;
+								}
+
+								#password-strength-bar {
+									height: 100%;
+									width: 0;
+									border-radius: 3px;
+									transition: width 0.5s;
+								}
+
+								.invalid-border {
+									border: 2px solid #ff4d4d;
+}
+							</style>
+
+							<div class="form-group">
+								<label for="date">D.O.B(Date Of Birth)</label>
+								<input id="date" type="date" class="form-control" name="DOB" required autofocus>
+								<div class="invalid-feedback">
+									What's your name?
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Address</label>
+								<input id="name" type="text" class="form-control" name="Address" required autofocus>
+								<div class="invalid-feedback">
+									What's your name?
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Contact Number</label>
+								<input id="name" type="tel" class="form-control" name="ContactNumber" required
+									autofocus>
+								<div class="invalid-feedback">
+									What's your name?
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="name">Level</label>
+								<input id="name" type="number" class="form-control" name="Level" required autofocus>
+								<div class="invalid-feedback">
+									What's your name?
+								</div>
+							</div>
+						</div>
+
+						<div class="">
+							<div class="custom-checkbox custom-control">
+								<input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
+								<label for="agree" class="custom-control-label">I agree to the <a href="/t&c">Terms and
+										Conditions</a></label>
+								<div class="invalid-feedback">
+									You must agree with our Terms and Conditions
+								</div>
+							</div>
+						</div>
+						<div th:text="${message}"></div>
+						<div class="form-button m-0">
+							<button type="submit" class="btn btn-primary btn-block">
+								Register
+							</button>
+						</div>
+						<div style="margin-top: 10px;"><p>Already have an account? <a href="/login">Login</a></p></div>
+						
+					</form>
+					<script>
+						document.addEventListener('DOMContentLoaded', function() {
+							const passwordInput = document.getElementById('password');
+							const strengthBar = document.getElementById('password-strength-bar');
+							
+							passwordInput.addEventListener('input', function() {
+								const password = passwordInput.value;
+								const length = password.length;
+								let strength = 0;
+					
+								if (length > 5) strength += 1;
+								if (length > 8) strength += 1;
+								if (/[A-Z]/.test(password)) strength += 1;
+								if (/[0-9]/.test(password)) strength += 1;
+								if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+					
+								switch (strength) {
+									case 0:
+									case 1:
+										strengthBar.style.width = '20%';
+										strengthBar.style.backgroundColor = '#ff4d4d';
+										break;
+									case 2:
+										strengthBar.style.width = '40%';
+										strengthBar.style.backgroundColor = '#ffcc00';
+										break;
+									case 3:
+										strengthBar.style.width = '60%';
+										strengthBar.style.backgroundColor = '#33cc33';
+										break;
+									case 4:
+										strengthBar.style.width = '80%';
+										strengthBar.style.backgroundColor = '#009900';
+										break;
+									case 5:
+										strengthBar.style.width = '100%';
+										strengthBar.style.backgroundColor = '#006600'; 
+										break;
+								}
+					
+								if (length < 8 || length > 16) {
+									passwordInput.classList.add('invalid-border');
+								} else {
+									passwordInput.classList.remove('invalid-border');
+								}
+							});
+						});
+					</script>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+		integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+		integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+		crossorigin="anonymous"></script>
+	<script src="/js/dashboard.js"></script>
+	<footer>
+		<div class="copy">
+			&copy; 2023 - 2025. All Rights Reserved. <br /><a href="https://www.kantipurjlcenter.com.np"
+				target="_blank">Kantipur Japanese Language Center</a>
+		</div>
+	</footer>
+</body>
+
+</html>

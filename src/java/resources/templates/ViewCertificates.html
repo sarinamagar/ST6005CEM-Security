@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Deviz">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<link rel="stylesheet" type="text/css" href="/css/CreateTest.css">
+	<title>KJLC : Your Certificates</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+	<link href="/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+	<header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
+		<div class="logo aln-mid">
+			<a href="/"><img src="/images/kantipur-logo.png" alt="KantipurJapanese Language Center" /></a>
+		</div>
+		<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+			data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="navbar-nav">
+			<div class="nav-item text-nowrap">
+			</div>
+		</div>
+	</header>
+<div class="container-fluid">
+	
+	<div class="row">
+		
+		<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+			<div class="position-sticky pt-3 sidebar-sticky">
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="/user/home">
+						  <span data-feather="home" class="align-text-bottom"></span>
+						   Student Dashboard
+						</a>
+					</li>
+				</ul>
+				<div class="accordion" id="accordionDashboardNav">
+  					<div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								Manage Account
+							</button>
+						</h2>
+    					<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionDashboardNav">
+							<div class="accordion-body">
+								<ul class="nav flex-column">
+									<li class="nav-item">
+										<a class="nav-link" href="/user/list/tests">
+										<span data-feather="list" class="align-text-bottom"></span>
+										Take Tests
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link " href="/user/list/results">
+										<span data-feather="bar-chart-2" class="align-text-bottom"></span>
+										My Results
+										</a>
+									</li>
+                    				<li class="nav-item">
+										<a class="nav-link" href="/user/edit">
+										<span data-feather="user" class="align-text-bottom"></span>
+										Update My Details
+										</a>
+									</li>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+				<div class="navbar-nav mt-auto" style="margin-top: auto;">
+					<div class="nav-item text-nowrap">
+						<a class="nav-link px-3" href="/logout">
+							<span data-feather="log-out" class="align-text-bottom"></span>
+							Sign out</a>
+					</div>
+				</div>
+			</div>
+</nav>
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <h4>Your Certificates</h4>
+  <div>
+    <div th:if="${certificate}!=null">
+        <img th:src="/media/${certificate}.png"  alt="">
+    </div>
+    <div th:unless="${certificate}!=null">
+        You currently have no certificates.
+    </div>
+
+  </div>
+</main>
+
+  </div>
+</div>
+
+
+    <script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+	  <script src="/js/dashboard.js"></script>
+    <footer>
+      <div class="copy">
+        &copy; 2023 - 2025. All Rights Reserved. <br/><a href="https://www.kantipurjlcenter.com.np" target="_blank">Kantipur Japanese Language Center</a>
+      </div>
+    </footer>
+  </body>
+</html>

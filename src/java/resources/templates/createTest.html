@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en" xmlns:th ="http://thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Deviz">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<link rel="stylesheet" type="text/css" href="/css/CreateTest.css">
+		<title>KJLC Admin Dashboard - Create Test</title>
+		<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+		<!-- Custom styles for this template -->
+		<link href="/css/dashboard.css" rel="stylesheet">
+	</head>
+	<body>
+
+		<header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
+			<div class="logo aln-mid">
+				<a href="/"><img src="/images/kantipur-logo.png" alt="KantipurJapanese Language Center" /></a>
+			</div>
+			<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-nav">
+			<div class="nav-item text-nowrap">
+			</div>
+			</div>
+		</header>
+
+		<div class="container-fluid">
+
+			<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+				<div class="position-sticky pt-3 sidebar-sticky">
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a class="nav-link" href="/admin/home">
+								<span data-feather="home" class="align-text-bottom"></span>
+								Admin Dashboard
+							</a>
+						</li>
+					</ul>
+					<div class="accordion" id="accordionDashboardNav">
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingOne">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									Test Management
+								</button>
+							</h2>
+							<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionDashboardNav">
+								<div class="accordion-body">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/test/get">
+											<span data-feather="list" class="align-text-bottom"></span>
+											List Tests
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link active" aria-current="page"  href="#">
+											<span data-feather="file-plus" class="align-text-bottom"></span>
+											Create Test
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/list/results">
+											<span data-feather="bar-chart-2" class="align-text-bottom"></span>
+											Results
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingTwo">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									Student Management
+								</button>
+							</h2>
+								<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionDashboardNav">
+								<div class="accordion-body">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/list/students">
+											<span data-feather="list" class="align-text-bottom"></span>
+											List Students
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/user/register">
+											<span data-feather="user-plus" class="align-text-bottom"></span>
+											Add Student
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/creditPage">
+												<span style="color:rgba(41, 139, 106, 0.842);" data-feather="trending-up" class="align-text-bottom"></span>
+													Add Credit
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingThree">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									Admin Management
+								</button>
+							</h2>
+								<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionDashboardNav">
+								<div class="accordion-body">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/list/admins">
+											<span data-feather="list" class="align-text-bottom"></span>
+											List Admins
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/register">
+											<span data-feather="user-plus" class="align-text-bottom"></span>
+											Create Admin
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingThree">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+									Site Management
+								</button>
+							</h2>
+								<div id="collapseFour" class="accordion-collapsed" aria-labelledby="headingThree" data-bs-parent="#accordionDashboardNav">
+								<div class="accordion-body">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/create-faq">
+											<span data-feather="list" class="align-text-bottom"></span>
+											Manage F.A.Q
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/create-qr">
+											<span data-feather="user-plus" class="align-text-bottom"></span>
+											Payment Details
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/t&s">
+                                                <span data-feather="user-plus" class="align-text-bottom"></span>
+                                                    Terms and conditions
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="navbar-nav mt-auto" style="margin-top: auto;">
+						<div class="nav-item text-nowrap">
+							<a class="nav-link px-3" href="/logout">
+								<span data-feather="log-out" class="align-text-bottom"></span>
+								Sign out</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+				<div class="test">
+					<div class="container">
+						<h4>Create Test</h4>
+						<form th:action = "@{/admin/test/create}" method="post" enctype="multipart/form-data">
+							<input type="text" name="questionid" id="input-hidden" hidden>
+						<div class="form-group">
+							<div class="label-section">
+							<label for="name">Name (<em>Enter name of the test.</em>)</label>
+								<input
+								type="text"
+								class="form-control"
+								id="name"
+								name="TestName"
+								required
+								/>
+							</div>
+							<div class="label-section">
+								<label for="level">Test Level (<em>Enter level/N1, N2, etc.</em>)</label>
+								<input
+								type="number"
+								class="form-control"
+								id="level"
+								name="level"
+								required
+								/>
+							</div>
+							<div class="label-section">
+								<label for="level">Test Duration (<em>Enter Duration in minutes.</em>)</label>
+								<input
+								type="number"
+								class="form-control"
+								id="duration"
+								name="duration"
+								required
+								/>
+							</div>
+						</div>
+						<div id="part" class="part-container">
+
+						</div>
+						
+						<script th:if="${message} != null">
+							alert("Invalid Test Creation. Please re-check and try again!")
+						</script>
+						
+						<script>
+							var i = 0;
+							var imgID = 0;
+							function add(source,x){
+								i ++;
+								var form = document.getElementById(source);
+								var newElement = document.createElement("div");
+								newElement.innerHTML= `<div class="test-section">
+							<div class="form-group" id = "group-${i}">
+								<div id = "question-${i}">
+									<Button id = "close" type= "Button" onclick = "deleteQuestion(${i})" style = "float: right">✕</Button>
+									<div>
+										<label for="question-text">Question<em> (Enter your question)</em></label>
+										<textarea
+											class="form-control"
+											id="question-text"
+											rows="3"
+											name="questionText"
+											required
+										></textarea>
+										<input type="hidden" name = "qID" value =" ">
+									</div>
+									<div>
+										<label for="question-text">Question In English<em> (Enter your question in english)</em></label>
+										<textarea
+											class="form-control"
+											id="question-text"
+											rows="3"
+											name="questionInEnglish"
+										></textarea>
+									</div>
+									<div>
+										<label for="question-text">Question In Nepali<em> (Enter your question in nepali )</em></label>
+										<textarea
+											class="form-control"
+											id="question-text"
+											rows="3"
+											name="questionInNativeLanguage"
+										></textarea>
+									</div>
+									<div class = "d-flex justify-content-center">
+										
+										<div id="image-container" style="height: auto !important; ">
+											<img id="uploaded-image-${imgID}" width = "200px">
+										</div>
+
+									</div>
+									<div class = "d-flex justify-content-center">
+										<div class="input-group mb-3" style="margin: 10px;">
+											<div class="custom-file">
+													<input type="file" accept="image/png, image/jpeg" class="custom-file-input" name = "QuestionImage"  id="inputImage-${imgID}" onchange="uploadImage('${imgID}')">
+													<label class="custom-file-label" for="inputGroupFile02">Insert image</label>
+											</div>
+										</div>
+
+										<div class="input-group mb-3" style="margin: 10px;">
+											<div class="custom-file">
+												<input type="file" accept="audio/*" class="custom-file-input" name = "QuestionAudio"  id="inputAudio-${imgID}" onchange="uploadImage('${imgID}')">
+												<label class="custom-file-label" for="inputGroupFile02">Insert audio</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="">
+										<label for="choice-1">Choice 1 (<em>Enter Choice 1 Answer</em>)</label>
+										<div id="image-container" style="height: auto !important; ">
+											<img id="image-a-${imgID}-uploaded" width = "200px">
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="choice-1"
+											name="optionA"
+										/>
+										<div class="input-group mb-3 mt-2" >
+											<div class="custom-file">
+												<input type="file" accept="image/png, image/jpeg" class="custom-file-input" name = "optionImageA"  id="image-a-${imgID}-option" onchange="uploadOptionImage('image-a-${imgID}')">
+												<label class="custom-file-label" for="optionImage">Insert file</label>
+											</div>
+										</div>
+									</div>
+									<input name = "partIndex" value = "`+x+`" hidden></input>
+									<div class="">
+										<label for="choice-2">Choice 2 (<em>Enter Choice 2 Answer</em>)</label>
+										<div id="image-container" style="height: auto !important; ">
+											<img id="image-b-${imgID}-uploaded" width = "200px">
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="choice-2"
+											name="optionB"
+										/>
+										<div class="input-group mb-3 mt-2" >
+											<div class="custom-file">
+												<input type="file" accept="image/png, image/jpeg" class="custom-file-input" name = "optionImageB"  id="image-b-${imgID}-option" onchange="uploadOptionImage('image-b-${imgID}')">
+												<label class="custom-file-label" for="optionImage">Insert file</label>
+											</div>
+										</div>
+									</div>
+									<div class="">
+										<label for="choice-3">Choice 3 (<em>Enter Choice 3 Answer</em>)</label>
+										<div id="image-container" style="height: auto !important; ">
+											<img id="image-c-${imgID}-uploaded" width = "200px" >
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="choice-3"
+											name="optionC"
+										/>
+										<div class="input-group mb-3 mt-2" >
+											<div class="custom-file">
+												<input type="file" accept="image/png, image/jpeg" class="custom-file-input" name = "optionImageC"  id="image-c-${imgID}-option" onchange="uploadOptionImage('image-c-${imgID}')">
+												<label class="custom-file-label" for="optionImage">Insert file</label>
+											</div>
+										</div>
+									</div>
+									<div class="">
+										<label for="choice-4">Choice 4 (<em>Enter Choice 4 Answer</em>)</label>
+										<div id="image-container" style="height: auto !important; ">
+											<img id="image-d-${imgID}-uploaded" width = "200px">
+										</div>
+										<input
+											type="text"
+											class="form-control"
+											id="choice-4"
+											name="optionD"
+										/>  
+										<div class="input-group mb-3 mt-2" >
+											<div class="custom-file">
+												<input type="file" accept="image/png, image/jpeg" class="custom-file-input" name = "optionImageD"  id="image-d-${imgID}-option" onchange="uploadOptionImage('image-d˜-${imgID}')">
+												<label class="custom-file-label" for="optionImage">Insert file</label>
+											</div>
+										</div>
+									</div>
+									<div class="">
+										<label for="correct-answer">Correct Answer (<em>Choose the correct answer from the list</em>)</label>
+										<select class="form-control" id="correct-answer" name = "correctOption"required>
+											<option value="A">Choice 1</option>
+											<option value="B">Choice 2</option>
+											<option value="C">Choice 3</option>
+											<option value="D">Choice 4</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							`;
+							imgID ++;
+							form.appendChild(newElement);
+							}
+						</script>
+
+						<script>
+							var x = 0;
+							function addPart(){
+								x++;
+								var part = document.getElementById("part");
+								var partElement = document.createElement('div');
+								var source = ('append-part-' + x);
+
+								partElement.innerHTML += `
+								<div class="part" id = "part-child part-parent-${x}">
+									<Button id = "close" type= "Button" onclick = "deletePart(${x})" style = "float: right">✕</Button>
+									<div class="Part-Question">
+										<div class="form-group">
+											<label for="question-text">Section<em> (Enter section name)</em></label>
+											<textarea
+												class="form-control"
+													id="question-text"
+													rows="3"
+													name="part"
+													required
+											></textarea>
+										</div>
+									</div>
+									<div id = "${source}"></div>
+									<div id = "rem-button" class="d-flex justify-content-center">
+										<button type="button" class="btn btn-secondary" style="margin: 10px;" onclick="event.preventDefault(); add('${source}', `+x+`)"> + Add Questions</button> 
+
+									</div>
+								</div>`;
+								part.appendChild(partElement);
+							}
+						</script>
+						<script>
+							function uploadImage(id) {
+								var fileInput = document.getElementById('inputImage-'+id);
+								var uploadedImage = document.getElementById('uploaded-image-'+id);
+								var file = fileInput.files[0];
+								var url = URL.createObjectURL(file);
+								uploadedImage.src = url;
+							}
+							function uploadOptionImage(div) {
+								var fileInput = document.getElementById(div+"-option");
+								var uploadedImage = document.getElementById(div + "-uploaded");
+								console.log(div+"option")
+								var file = fileInput.files[0];
+								var url = URL.createObjectURL(file);
+								uploadedImage.src = url;
+							}
+						</script>	
+						<script>
+							function deleteQuestion(questionNo){
+								var toDelete = document.getElementById("group-"+questionNo);
+								var formElements = toDelete.querySelectorAll("input, select, textarea");
+								for (var i = 0; i < formElements.length; i++) {
+									formElements[i].disabled = true;
+								}
+								toDelete.style.display = "none";
+								console.log(toDelete.style.display);
+							}
+							function deletePart(partNo) {
+								var toDelete = document.getElementById("part-child part-parent-" + partNo);
+								var formElements = toDelete.querySelectorAll("input, select, textarea");
+								for (var i = 0; i < formElements.length; i++) {
+									formElements[i].disabled = true;
+								}
+								toDelete.style.display = "none";
+							}
+						</script>					
+						<div class="d-flex justify-content-center">
+							<button type="button" class="btn btn-secondary" style="margin: 10px;" onclick="addPart()"> + Add Section</button> 
+						</div>
+
+						<div class="d-flex justify-content-center">
+
+							<button type="button" class="btn btn-secondary" onclick="clear()" style="margin: 10px;">Clear</button> 
+							<button type="submit" id="submit" class="btn btn-primary" style="margin: 10px;">Submit</button>
+						</div>
+						<script>
+							function clear(){
+								window.location.reload();
+							}
+						</script>
+					</div>
+				</div>
+			</main>
+		</div>
+		<footer>
+			<div class="copy">
+				&copy; 2023 - 2025. All Rights Reserved. <br/><a href="https://www.kantipurjlcenter.com.np" target="_blank">Kantipur Japanese Language Center</a>
+			</div>
+		</footer>
+		<script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+		<script src="/js/dashboard.js"></script>
+	</body>
+</html>

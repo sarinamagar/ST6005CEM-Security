@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="en" xmlns:th ="http://thymeleaf.org">
+    <div th:each = "submission: ${submissions}">
+        <div th:text="${submission.questionID}"></div>
+        <div th:text="${submission.answer}"></div>
+    </div>
+</html>

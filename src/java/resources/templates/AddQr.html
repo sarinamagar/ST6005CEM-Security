@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" xmlns:th ="http://thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Deviz">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<link rel="stylesheet" type="text/css" href="/css/CreateTest.css">
+		<title>KJLC Site Management - Create F.A.Q</title>
+		<link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+			integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+			crossorigin="anonymous"
+		/>
+		<!-- Custom styles for this template -->
+		<link href="/css/dashboard.css" rel="stylesheet">
+	</head>
+	<body>
+
+		<header class="navbar navbar-light sticky-top bg-light flex-md-nowrap p-0 shadow">
+			<div class="logo aln-mid">
+				<a href="/"><img src="/images/kantipur-logo.png" alt="KantipurJapanese Language Center" /></a>
+			</div>
+			<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-nav">
+			<div class="nav-item text-nowrap">
+			</div>
+			</div>
+		</header>
+
+		<div class="container-fluid">
+
+			<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+				<div class="position-sticky pt-3 sidebar-sticky">
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a class="nav-link" href="/admin/home">
+								<span data-feather="home" class="align-text-bottom"></span>
+								Admin Dashboard
+							</a>
+						</li>
+					</ul>
+					<div class="accordion" id="accordionDashboardNav">
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingOne">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+									Test Management
+								</button>
+							</h2>
+							<div id="collapseOne" class="accordion-collapse collapsed " aria-labelledby="headingOne" data-bs-parent="#accordionDashboardNav">
+								<div class="accordion-body">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/test/get">
+											<span data-feather="list" class="align-text-bottom"></span>
+											List Tests
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" aria-current="page"  href="#">
+											<span data-feather="file-plus" class="align-text-bottom"></span>
+											Create Test
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/list/results">
+											<span data-feather="bar-chart-2" class="align-text-bottom"></span>
+											Results
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingTwo">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									Student Management
+								</button>
+							</h2>
+								<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionDashboardNav">
+								<div class="accordion-body">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/list/students">
+											<span data-feather="list" class="align-text-bottom"></span>
+											List Students
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/user/register">
+											<span data-feather="user-plus" class="align-text-bottom"></span>
+											Add Student
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/creditPage">
+												<span style="color:rgba(41, 139, 106, 0.842);" data-feather="trending-up" class="align-text-bottom"></span>
+													Add Credit
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingThree">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+									Admin Management
+								</button>
+							</h2>
+								<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionDashboardNav">
+								<div class="accordion-body">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/list/admins">
+											<span data-feather="list" class="align-text-bottom"></span>
+											List Admins
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/register">
+											<span data-feather="user-plus" class="align-text-bottom"></span>
+											Create Admin
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingThree">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+									Site Management
+								</button>
+							</h2>
+								<div id="collapseFour" class="accordion-collapsed" aria-labelledby="headingThree" data-bs-parent="#accordionDashboardNav">
+								<div class="accordion-body">
+									<ul class="nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/create-faq">
+											<span data-feather="list" class="align-text-bottom"></span>
+											Manage F.A.Q
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/create-qr">
+											<span data-feather="user-plus" class="align-text-bottom"></span>
+											Payment Details
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/admin/t&s">
+                                                <span data-feather="user-plus" class="align-text-bottom"></span>
+                                                    Terms and conditions
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="navbar-nav mt-auto" style="margin-top: auto;">
+						<div class="nav-item text-nowrap">
+							<a class="nav-link px-3" href="/logout">
+								<span data-feather="log-out" class="align-text-bottom"></span>
+								Sign out</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+
+			<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="overflow: scroll;">
+                <body style="overflow-y: scroll; margin-bottom: 200px;">
+
+                    <h2 class="my-4">Upload Qr Image</h2>
+					<div>
+						<img src="/images/Qr.jpeg" alt="QR Image not found" height="250px">
+					</div>
+                    
+                    <form th:action="@{/admin/add-qr}" method="post" enctype="multipart/form-data">
+                        <input type="file" name="image" accept="image/png" required><br><br>
+                        <button type="submit" class="btn btn-secondary">Upload</button>
+                    </form>
+                    <form class="mt-5" th:action="@{/admin/payment/update-desc}" method="post">
+                        <textarea style="width: 400px; height: 300px; padding: 10px; text-align: start;" type="text" name="description" th:text="${description}"></textarea> <br><br>
+                        <button type="submit" class="btn btn-secondary">Update Description</button>
+                    </form>
+                    </body>
+			</main>
+							
+		
+		<script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+		<script src="/js/dashboard.js"></script>
+	</body>
+    <footer style="position: fixed; bottom: 0; left: 0;">
+        <div class="copy">
+            &copy; 2023 - 2025. All Rights Reserved. <br/><a href="https://www.kantipurjlcenter.com.np" target="_blank">Kantipur Japanese Language Center</a>
+        </div>
+    </footer>
+</html>
